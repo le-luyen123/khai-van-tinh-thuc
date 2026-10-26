@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CÀ PHÊ AN NHIÊN - Khơi nguồn cảm hứng từ sự thuần khiết</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome cho Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* === BẢNG MÀU & BIẾN TOÀN CỤC === */
+        :root {
+            --primary: #4E342E; /* Nâu cà phê */
+            --accent: #D35400;  /* Cam đất điểm nhấn */
+            --bg-light: #FAF8F5; /* Nền be sáng */
+            --text-main: #333333;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* === THIẾT LẬP CƠ BẢN === */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: var(--font-body); 
+            background-color: var(--bg-light); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            scroll-behavior: smooth; 
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        .section-title { 
+            text-align: center; 
+            font-family: var(--font-heading); 
+            font-size: 2.5rem; 
+            color: var(--primary); 
+            margin-bottom: 40px; 
+        }
+
+        /* === THANH ĐIỀU HƯỚNG (HEADER) === */
+        header { 
+            position: fixed; 
+            top: 0; width: 100%; 
+            z-index: 1000; 
+            padding: 20px 0; 
+            transition: all 0.3s ease; 
+        }
+        header.scrolled { 
+            background: rgba(250, 248, 245, 0.98); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            padding: 15px 0; 
+        }
+        .nav-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { 
+            font-family: var(--font-heading); 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            color: var(--primary); 
+        }
+        header:not(.scrolled) .logo, 
+        header:not(.scrolled) .nav-links a, 
+        header:not(.scrolled

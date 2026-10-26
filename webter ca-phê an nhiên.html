@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CÀ PHÊ AN NHIÊN - Khơi nguồn cảm hứng từ sự thuần khiết</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome cho Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* === BẢNG MÀU & BIẾN TOÀN CỤC === */
+        :root {
+            --primary: #4E342E; /* Nâu cà phê */
+            --accent: #D35400;  /* Cam đất điểm nhấn */
+            --bg-light: #FAF8F5; /* Nền be sáng */
+            --text-main: #333333;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* === THIẾT LẬP CƠ BẢN === */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: var(--font-body); 
+            background-color: var(--bg-light); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            scroll-behavior: smooth; 
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        .section-title { 
+            text-align: center; 
+            font-family: var(--font-heading); 
+            font-size: 2.5rem; 
+            color: var(--primary); 
+            margin-bottom: 40px; 
+        }
+
+        /* === THANH ĐIỀU HƯỚNG (HEADER) === */
+        header { 
+            position: fixed; 
+            top: 0; width: 100%; 
+            z-index: 1000; 
+            padding: 20px 0; 
+            transition: all 0.3s ease; 
+        }
+        header.scrolled { 
+            background: rgba(250, 248, 245, 0.98); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            padding: 15px 0; 
+        }
+        .nav-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { 
+            font-family: var(--font-heading); 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            color: var(--primary); 
+        }
+        header:not(.scrolled) .logo, 
+        header:not(.scrolled) .nav-links a, 
+        header:not(.scrolled) .hamburger i { color: #ffffff; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
+        
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { 
+            font-weight: 500; 
+            font-size: 1.1rem; 
+            transition: color 0.3s; 
+        }
+        .nav-links a:hover { color: var(--accent) !important; }
+        .hamburger { display: none; cursor: pointer; font-size: 1.8rem; z-index: 1001; }
+
+        /* === MÀN HÌNH ĐẦU (HERO SECTION) === */
+        .hero { 
+            height: 100vh; 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24') center/cover; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: #ffffff; 
+        }
+        .hero-content h1 { 
+            font-family: var(--font-heading); 
+            font-size: 4rem; 
+            margin-bottom: 10px; 
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+        .hero-content p { 
+            font-size: 1.5rem; 
+            margin-bottom: 30px; 
+            font-style: italic; 
+            font-family: var(--font-heading);
+        }
+        .btn { 
+            padding: 12px 30px; 
+            border-radius: 30px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s; 
+            display: inline-block; 
+            margin: 5px;
+        }
+        .btn-primary { 
+            background: var(--accent); 
+            color: #ffffff; 
+            border: 2px solid var(--accent); 
+        }
+        .btn-primary:hover { background: transparent; border-color: var(--accent); color: var(--accent); }
+        .btn-outline { 
+            background: transparent; 
+            border: 2px solid #ffffff; 
+            color: #ffffff; 
+        }
+        .btn-outline:hover { background: #ffffff; color: var(--primary); }
+
+        /* === KHÔNG GIAN & CÂU CHUYỆN === */
+        .about-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px; 
+            align-items: center; 
+        }
+        .about-img { 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+        }
+        .about-img img { width: 100%; height: auto; display: block; }
+        .about-text h3 { 
+            font-family: var(--font-heading); 
+            font-size: 2rem; 
+            color: var(--primary); 
+            margin-bottom: 20px; 
+        }
+        .about-text p { margin-bottom: 15px; font-size: 1.1rem; color: #555; text-align: justify; }
+
+        /* === THỰC ĐƠN (MENU) === */
+        .menu-tabs { 
+            display: flex; 
+            justify-content: center; 
+            gap: 20px; 
+            margin-bottom: 40px; 
+            flex-wrap: wrap;
+        }
+        .tab-btn { 
+            background: transparent; 
+            border: none; 
+            font-size: 1.2rem; 
+            font-weight: 600; 
+            color: #777; 
+            cursor: pointer; 
+            padding: 10px 20px; 
+            border-bottom: 3px solid transparent; 
+            transition: all 0.3s; 
+            font-family: var(--font-heading); 
+        }
+        .tab-btn.active, .tab-btn:hover { 
+            color: var(--accent); 
+            border-bottom-color: var(--accent); 
+        }
+        .tab-content { display: none; max-width: 800px; margin: 0 auto; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease; }
+        
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        
+        .menu-item { display: flex; align-items: baseline; margin-bottom: 20px; font-size: 1.2rem; }
+        .menu-name { font-weight: 600; color: var(--primary); }
+        .menu-dots { flex-grow: 1; border-bottom: 2px dotted #ccc; margin: 0 15px; }
+        .menu-price { font-weight: 700; color: var(--accent); }
+        .menu-category-img { 
+            width: 100%; height: 250px; 
+            object-fit: cover; 
+            border-radius: 15px; 
+            margin-bottom: 30px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+        }
+
+        /* === THƯ VIỆN ẢNH (GALLERY) === */
+        #gallery { background-color: #f1eee9; }
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; 
+        }
+        .gallery-item { 
+            border-radius: 15px; 
+            overflow: hidden; 
+            height: 300px; 
+            cursor: pointer;
+        }
+        .gallery-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.5s ease; 
+        }
+        .gallery-item:hover img { transform: scale(1.1); }
+
+        /* === LIÊN HỆ & FOOTER === */
+        footer { background: var(--primary); color: #ffffff; padding: 60px 0 20px; }
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 40px; 
+        }
+        .footer-col h4 { 
+            font-family: var(--font-heading); 
+            font-size: 1.5rem; 
+            margin-bottom: 20px; 
+            color: var(--accent); 
+        }
+        .footer-col p, .footer-col ul li { margin-bottom: 15px; color: #dddddd; }
+        .social-links a { 
+            color: #ffffff; 
+            font-size: 1.5rem; 
+            margin-right: 15px; 
+            transition: color 0.3s; 
+        }
+        .social-links a:hover { color: var(--accent); }
+        .map-container iframe { width: 100%; height: 200px; border: 0; border-radius: 10px; }
+        .footer-bottom { 
+            text-align: center; 
+            border-top: 1px solid rgba(255,255,255,0.1); 
+            padding-top: 20px; 
+            color: #bbbbbb; 
+            font-size: 0.9rem; 
+        }
+
+        /* === NÚT TƯƠNG TÁC NỔI (FAB) === */
+        .fab-container { 
+            position: fixed; 
+            bottom: 30px; 
+            right: 30px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            z-index: 999; 
+        }
+        .fab { 
+            width: 55px; 
+            height: 55px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #ffffff; 
+            font-size: 24px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+            transition: transform 0.3s ease; 
+        }
+        .fab:hover { transform: scale(1.1); color: #ffffff; }
+        .fab-zalo { background: #0068FF; font-size: 28px; font-weight: bold; }
+        .fab-phone { background: #28a745; }
+
+        /* === RESPONSIVE (MOBILE FIRST ADAPTATION) === */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links { 
+                position: fixed; 
+                top: 0; right: -100%; 
+                height: 100vh; width: 70%; 
+                background: var(--bg-light); 
+                flex-direction: column; 
+                align-items: center; 
+                justify-content: center; 
+                transition: 0.4s ease-in-out; 
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1); 
+            }
+            .nav-links.active { right: 0; }
+            .nav-links a { color: var(--primary) !important; font-size: 1.5rem; margin: 15px 0; text-shadow: none !important; }
+            header:not(.scrolled) .hamburger.active i { color: var(--primary); text-shadow: none; }
+            
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content p { font-size: 1.2rem; }
+            .btn { display: block; margin: 10px auto; width: 80%; }
+            .about-grid { grid-template-columns: 1fr; }
+            
+            .menu-item { flex-direction: column; align-items: flex-start; }
+            .menu-dots { display: none; }
+            .menu-price { margin-top: 5px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- THƯỜNG ĐIỀU HƯỚNG -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#home" class="logo">An Nhiên</a>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Trang chủ</a></li>
+                <li><a href="#about">Không gian</a></li>
+                <li><a href="#menu">Thực đơn</a></li>
+                <li><a href="#gallery">Thư viện</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- MÀN HÌNH ĐẦU -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>CÀ PHÊ AN NHIÊN</h1>
+            <p>Khơi nguồn cảm hứng từ sự thuần khiết</p>
+            <a href="#menu" class="btn btn-primary">Xem Thực Đơn</a>
+            <a href="#contact" class="btn btn-outline">Chỉ Đường Đến Quán</a>
+        </div>
+    </section>
+
+    <!-- KHÔNG GIAN & CÂU CHUYỆN -->
+    <section id="about">
+        <div class="container about-grid">
+            <div class="about-text">
+                <h3>Nơi Dừng Chân Bình Yên Giữa Lòng Thành Phố</h3>
+                <p>Giữa những bộn bề của nhịp sống hối hả, Cà Phê An Nhiên ra đời như một chốn về mộc mạc, nơi bạn có thể trút bỏ âu lo và đắm mình vào không gian ấm áp, tĩnh lặng.</p>
+                <p>Chúng tôi tự hào mang đến cho bạn những tách cà phê trọn vị, cam kết sử dụng 100% hạt cà phê nguyên chất được tuyển chọn kỹ lưỡng. Mỗi giọt cà phê tại An Nhiên không chỉ là thức uống, mà là sự chắt chiu của thiên nhiên và tâm huyết của người pha chế.</p>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf" alt="Không gian Cà Phê An Nhiên ấm áp" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- THỰC ĐƠN -->
+    <section id="menu">
+        <div class="container">
+            <h2 class="section-title">Thực Đơn Của Chúng Tôi</h2>
+            
+            <div class="menu-tabs">
+                <button class="tab-btn active" onclick="openTab(event, 'coffee')">Cà Phê Nguyên Chất</button>
+                <button class="tab-btn" onclick="openTab(event, 'tea')">Trà Thanh Nhiệt</button>
+                <button class="tab-btn" onclick="openTab(event, 'cake')">Bánh Ngọt</button>
+            </div>
+
+            <!-- Tab Cà Phê -->
+            <div id="coffee" class="tab-content active">
+                <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf" alt="Cà phê nguyên chất" class="menu-category-img" loading="lazy">
+                <div class="menu-item">
+                    <span class="menu-name">Cà phê Đen nguyên chất</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">35.000đ</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Cà phê Sữa An Nhiên</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">40.000đ</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Bạc Xỉu</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">45.000đ</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Cold Brew Cam Sả</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">55.000đ</span>
+                </div>
+            </div>
+
+            <!-- Tab Trà -->
+            <div id="tea" class="tab-content">
+                <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3" alt="Trà thanh nhiệt" class="menu-category-img" loading="lazy">
+                <div class="menu-item">
+                    <span class="menu-name">Trà Sen Vàng</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">45.000đ</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Trà Đào Cam Sả</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">50.000đ</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Trà Oolong Lài</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">45.000đ</span>
+                </div>
+            </div>
+
+            <!-- Tab Bánh -->
+            <div id="cake" class="tab-content">
+                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b" alt="Bánh ngọt" class="menu-category-img" loading="lazy">
+                <div class="menu-item">
+                    <span class="menu-name">Tiramisu</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">55.000đ</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Bánh Sừng Trâu</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">35.000đ</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Mousse Chanh Dây</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">45.000đ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THƯ VIỆN ẢNH -->
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title">Góc An Nhiên</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24" alt="Góc check-in 1" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf" alt="Góc check-in 2" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3" alt="Góc check-in 3" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b" alt="Góc check-in 4" loading="lazy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER & LIÊN HỆ -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>CÀ PHÊ AN NHIÊN</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> [ĐỊA CHỈ QUÁN CỦA BẠN]</p>
+                    <p><i class="fas fa-phone-alt"></i> [SỐ ĐIỆN THOẠI/ZALO]</p>
+                    <p><i class="fas fa-envelope"></i> lienhe@capheannhien.vn</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Giờ Mở Cửa</h4>
+                    <ul>
+                        <li>Thứ 2 - Thứ 6: 07:00 - 22:00</li>
+                        <li>Thứ 7 - Chủ Nhật: 07:30 - 22:30</li>
+                        <li>(Bao gồm cả các ngày lễ)</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Bản Đồ Của Quán</h4>
+                    <div class="map-container">
+                        <!-- Nhúng Google Maps Iframe mẫu -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.495029311059!2d106.69758091533423!3d10.77326699232386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f40a3b49e59%3A0xa1bd14e483a602bd!2sHo%20Chi%20Minh%20City!5e0!3m2!1sen!2s!4v1680000000000!5m2!1sen!2s" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cà Phê An Nhiên. Khơi nguồn cảm hứng từ sự thuần khiết.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NÚT GỌI VÀ ZALO NỔI -->
+    <div class="fab-container">
+        <!-- Thay [SỐ ZALO] và [SỐ ĐT] bằng số thật -->
+        <a href="https://zalo.me/[SỐ ZALO]" target="_blank" class="fab fab-zalo" title="Nhắn tin Zalo">Z</a>
+        <a href="tel:[SỐ ĐT]" class="fab fab-phone" title="Gọi ngay"><i class="fas fa-phone-alt"></i></a>
+    </div>
+
+    <!-- TƯƠNG TÁC JAVASCRIPT -->
+    <script>
+        // 1. Hiệu ứng Sticky Header khi cuộn trang
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
